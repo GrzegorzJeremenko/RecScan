@@ -1,16 +1,20 @@
 <template>
   <div class="home">
-    <Scanner/>
+    <!-- <Scanner/> -->
   </div>
 </template>
 
 <script>
-import Scanner from '@/components/Scanner.vue'
+//import Scanner from '@/components/Scanner.vue'
 
 export default {
   name: 'Home',
   components: {
-    Scanner
+    //Scanner
   }
 }
 </script>
+
+<style scoped>
+
+</style>

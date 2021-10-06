@@ -1,6 +1,8 @@
 # RecScan ♻️
 #### Aplikacja mobilna pomagająca w selekcji odpadów.
 
+<img src="https://raw.githubusercontent.com/grzegorzjeremenko/recscan/master/images/logo.png" width="500">
+
 ### O Projekcie 🚧
 
 Główną ideą stojąca za projektem było rozwiązane jednego z najważniejszych problemów, występujących w większości nowoczesnych miast w Polsce — problemu związanego z segregacją odpadów. Można pomyśleć, że naklejki znajdujące się na koszach pomogą, jednak większość osób i tak nie zawsze jest pewna, do którego kosza wyrzucić dany odpad. Prezentujemy więc aplikacje, która za pomocą kodu kreskowego określa, do którego kosza należy wyrzucić dane opakowanie.

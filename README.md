@@ -1,7 +1,7 @@
 # RecScan ♻️
 #### Aplikacja mobilna pomagająca w selekcji odpadów.
 
-<img src="https://raw.githubusercontent.com/grzegorzjeremenko/recscan/master/images/logo.png" width="500">
+<img src="https://raw.githubusercontent.com/GrzegorzJeremenko/RecScan/master/images/logo.png" width="500">
 
 ### O Projekcie 🚧
 

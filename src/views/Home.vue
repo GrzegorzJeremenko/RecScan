@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <!-- <Scanner/> -->
+    <TopBar />
+    <router-view/>
+    <NavBar />
   </div>
 </template>
 
 <script>
-//import Scanner from '@/components/Scanner.vue'
+  import NavBar from '@/components/NavBar.vue'
+  import TopBar from '@/components/TopBar.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    //Scanner
+  export default {
+    name: 'Home',
+    components: {
+      NavBar,
+      TopBar
+    }
   }
-}
 </script>
 
 <style scoped>

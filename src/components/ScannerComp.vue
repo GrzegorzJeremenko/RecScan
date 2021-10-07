@@ -1,7 +1,6 @@
 <template>
-  <div class="hello">
-    <div id="interactive" class="viewport">
-    </div>
+  <div class="scannerComp">
+    <div id="interactive" class="viewport"></div>
   </div>
 </template>
 
@@ -9,7 +8,7 @@
   import Quagga from 'quagga';
 
   export default {
-    name: 'HelloWorld',
+    name: 'ScannerComp',
     data() {
       return {
         scanCode: ''
@@ -26,15 +25,16 @@
           readers: ["ean_reader"]
         }
       }, function(err) {
-        if (err) console.log(err)
-        else {
+        if (err) {
+          console.log(err)
+        } else {
           console.log("Initialization finished. Ready to start")
           Quagga.start()
         }
       })
 
       Quagga.onDetected(function(result) {
-        var code = result.codeResult.code
+        let code = result.codeResult.code
 
         console.log(result)
         console.log(code)

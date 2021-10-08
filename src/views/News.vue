@@ -2,9 +2,9 @@
   <div class="news">
     <h1>Aktualności</h1>
     <Article 
-      v-for="article in articles"
+      v-for="(article, index) in articles"
       :articleData="article"
-      :key="article.date" />
+      :key="index" />
     <div id="bottom"></div>
   </div>
 </template>
@@ -23,15 +23,15 @@
           {
             type: 'video',
             source: 'CwAP97KJTIg',
-            title: 'Dowiedz się jak segregować',
+            title: 'Recykling odpadów w Polsce',
             description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
             date: '25.01.2021'
           },
           {
             type: 'image',
             source: 'https://lh3.googleusercontent.com/proxy/vFHz4EtEFru3_lwIoQquAL5nfVL3ogxVZnprQqkApiWfRzHwVJLOka5Hs-iQlYT18BlUi3xJiFAqrhXT5KnsEjAYesRcG2zJEvKQvdQEzKdeAfHejCOxEUfbNl6nuWAPz7IYiCGHh9uYZAIDhQ4v_A',
-            title: 'Który kosz wybrać?',
-            description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
+            title: 'Jak segregować?',
+            description: 'Główna zasada Jednolitego Systemu Segregacji Odpadów (JSSO) jest jedna – należy oddzielać surowce od odpadów, które nie nadają się do powtórnego przetworzenia. Jakie surowce oddzielamy? Są to: metale i tworzywa sztuczne, papier, a także opakowania szklane i odpady biodegradowalne.',
             date: '22.01.2021'
           }
         ]

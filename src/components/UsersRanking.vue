@@ -9,7 +9,7 @@
                 ref="numberOfPoints"
                 :from="0"
                 :to="userData.points"
-                :duration="2"
+                :duration="(2 - id) >= 0 ? (5 - id) : 2"
                 easing="Sine.easeOut"/>
           </h2>
           <i class="icon-diamond"></i>

@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <TopBar />
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
     <NavBar />
   </div>
 </template>
@@ -32,5 +34,10 @@
 </script>
 
 <style scoped>
-
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

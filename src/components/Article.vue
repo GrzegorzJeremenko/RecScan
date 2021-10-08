@@ -98,6 +98,7 @@ export default {
         color: #fff;
         font-size: 16px;
         line-height: 17px;
+        text-align: justify;
     }
 
     article h3 {

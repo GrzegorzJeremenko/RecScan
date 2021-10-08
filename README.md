@@ -7,7 +7,7 @@
 
 Główną ideą stojąca za projektem było rozwiązane jednego z najważniejszych problemów, występujących w większości nowoczesnych miast w Polsce — problemu związanego z segregacją odpadów. Można pomyśleć, że legenda znajdująca się na koszach pomoże, jednak większość osób i tak nie zawsze jest pewna, do którego kosza wyrzucić dany odpad. Prezentujemy więc aplikacje internetową, która za pomocą kodu kreskowego określa, do którego kosza należy wyrzucić dane opakowanie.
 
-<img src="https://raw.githubusercontent.com/GrzegorzJeremenko/RecScan/master/images/home.png" width="300">
+<img src="https://raw.githubusercontent.com/GrzegorzJeremenko/RecScan/master/images/home.PNG" width="300">
 
 ### Technologia 💻
 
@@ -21,7 +21,7 @@ Komunikuje się z systemem API w celu określenia typu opakowania produktu.
 
 Dane o produktach przechowywane są na serwerze API i ładowane są bezpośrednio po uruchomieniu aplikacji. RecScan jest w stanie pomóc w selekcji odpadów. Za każde wyrzucone opakowanie po produkcie użytkownik dostaje punkty, które mają na celu motywacje użytkowników do dbania o środowisko. W aplikacji dostępny jest ranking punktów. Użytkownicy mogą także przeczytać aktualności ze świata recyklingu.
 
-<img src="https://raw.githubusercontent.com/GrzegorzJeremenko/RecScan/master/images/ranking.png" width="300">
+<img src="https://raw.githubusercontent.com/GrzegorzJeremenko/RecScan/master/images/ranking.PNG" width="300">
 
 ### Przyszłe cele 🔥
 

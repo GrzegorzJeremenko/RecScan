@@ -25,6 +25,8 @@
 </template>
 
 <script>
+    import {userRegister} from '@/api.js'
+
   export default {
     name: 'Register',
     data() {
@@ -43,11 +45,26 @@
 
             if(name != "") {
                 if(nameRegex.test(name)) {
-                    localStorage.setItem('login', name);
-                    this.navigateTo('/news')
+                    userRegister(name)
+                    .then((res) => {
+                        localStorage.setItem('login', name);
+                        localStorage.setItem('userId', res.data._id);
+                        localStorage.setItem('points', res.data.points);
+
+                        this.navigateTo('/news')
+                    })
+                    .catch((err) => {
+                        console.error(err)
+
+                        this.error = "Spróbuj ponownie później."
+                    })
                 } else this.error = "Pole zawiera znaki specjalne."
             } else this.error = "Pole nie może być puste."
         }
+    },
+    mounted: function () {
+        if(localStorage.getItem('login') != null) 
+            this.navigateTo('/news')
     }
   }
 </script>

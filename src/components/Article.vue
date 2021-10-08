@@ -18,10 +18,10 @@
     
     <h2
         v-on:click="shortDescription = !shortDescription">
-        {{ descripton(articleData.description) + descriptionShow }}
+        {{ descripton(articleData.description) + descriptionShow  }}
     </h2>
     
-    <h3>{{ articleData.date }}</h3>
+    <h3>{{ date(articleData.createdAt) }}</h3>
   </article>
 </template>
 
@@ -53,6 +53,10 @@ export default {
             return description.substr(0, 45) + "..."
         else
             return description
+    },
+    date(date) {
+        var createAt = new Date(date);
+        return (createAt.getDate() < 9 ? "0" + createAt.getDate() : createAt.getDate()) + "." + (createAt.getMonth() < 9 ? "0" + createAt.getMonth() + 1 : createAt.getMonth() + 1) + "." + createAt.getFullYear();
     }
   }
 }
@@ -100,7 +104,7 @@ export default {
         line-height: 17px;
         text-align: justify;
     }
-
+    
     article h3 {
         width: 90%;
         margin: 10px 0 10px 0;

@@ -9,16 +9,12 @@
           :from="lastPoints"
           :to="points"
           :duration="3"
+          @complete="completed"
           easing="Sine.easeOut"/>
       </h1>
-      <i
-        class="icon-diamond"></i>
     </div>
-    <div
-      id="settings"
-      v-on:click="navigateTo('/settings')">
-      <i
-        class="icon-cog"></i>
+    <div id="settings">
+      <i class="icon-diamond"></i>
     </div>
   </section>
 </template>
@@ -26,19 +22,14 @@
 <script>
 export default {
   name: 'Points',
-  data() {
-    return {
-      points: 512,
-      lastPoints: 0
-    }
-  },
-  mounted: function () {
-    this.$refs.numberOfPoints.play();
-  },
+  props: ['points', 'lastPoints'],
   methods: {
     navigateTo: function(subpage) {
       if(this.$route.path != subpage) 
         this.$router.push(subpage)
+    },
+    completed: function() {
+      localStorage.setItem('lastPoints', this.points)
     }
   }
 }
@@ -57,7 +48,7 @@ export default {
   }
 
   section#topBar div#points {
-    width: calc(100% - 50px);
+    width: calc(100% - 45px);
     height: 100%;
     margin: 0 -10px 0 0;
     border-radius: 10px;
@@ -67,7 +58,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 0 10px 0 10px;
+    padding: 0 5px 0 7px;
   }
 
   section#topBar div#points h1 {
@@ -75,12 +66,8 @@ export default {
     margin: 0 3px 0 0;
   }
 
-  section#topBar div#points i.icon-diamond {
-    color: #fff;
-  }
-
   section#topBar div#settings {
-    width: 60px;
+    width: 55px;
     height: 100%;
     background-color: #27ae60;
     z-index: 999;
@@ -91,9 +78,9 @@ export default {
     align-items: center;
   }
 
-  section#topBar div#settings i.icon-cog {
+  section#topBar div#settings i.icon-diamond {
     color: #fff;
-    font-size: 24px;
-    margin: 0 0 0 8px;
+    font-size: 18px;
+    margin: 0 0 0 5px;
   }
 </style>

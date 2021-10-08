@@ -1,7 +1,13 @@
 <template>
-  <div
-    class="trash">
-    <h1>{{ wasteName }}</h1>
+  <div class="trash">
+    <i 
+    class="icon-left-open"
+    v-on:click="navigateTo('/news')"></i>
+    <h1>
+        +1 
+        <i class="icon-diamond"></i>
+    </h1>
+    <h2>{{ wasteName }}</h2>
     <div id="top">
         <div id="trashUp">
             <div id="hole"></div>
@@ -11,6 +17,7 @@
     <div id="bottom">
         <div id="trashDown"></div>
     </div>
+    <h3>Wyrzuć do {{ binColor }} pojemnika</h3>
   </div>
 </template>
 
@@ -18,42 +25,93 @@
     export default {
         name: 'Trash',
         mounted: function () {
-            switch(localStorage.getItem('TypeOfWaste')) {
-                case 'plastic':
-                    this.trashColor = '#fbc531';
-                    this.wasteName = 'Plastik i metal'
-                break;
-                case 'glass':
-                    this.trashColor = '#4cd137';
-                    this.wasteName = 'Szkło'
-                break;
-                case 'bio':
-                    this.trashColor = '#795548';
-                    this.wasteName = 'Bio'
-                break;
-                case 'paper':
-                    this.trashColor = '#00a8ff';
-                    this.wasteName = 'Papier'
-                break;
-                case 'other':
-                    this.trashColor = '#353b48';
-                    this.wasteName = 'Inne'
-                break;
-            }
+            if(localStorage.getItem('typeOfWaste') != null) {
+                switch(localStorage.getItem('typeOfWaste')) {
+                    case 'plastic':
+                        this.trashColor = '#fbc531';
+                        this.wasteName = 'Plastik i metal'
+                        this.binColor = 'żółtego'
+                    break;
+                    case 'glass':
+                        this.trashColor = '#4cd137';
+                        this.wasteName = 'Szkło'
+                        this.binColor = 'zielonego'
+                    break;
+                    case 'bio':
+                        this.trashColor = '#795548';
+                        this.wasteName = 'Bio'
+                        this.binColor = 'brązowego'
+                    break;
+                    case 'paper':
+                        this.trashColor = '#00a8ff';
+                        this.wasteName = 'Papier'
+                        this.binColor = 'niebieskiego'
+                    break;
+                    case 'other':
+                        this.trashColor = '#353b48';
+                        this.wasteName = 'Inne'
+                        this.binColor = 'czarnego'
+                    break;
+                }
 
-            document.querySelector('#trashUp').style.backgroundColor = this.trashColor;
-            document.querySelector('#trashDown').style.backgroundColor = this.trashColor;
+                document.querySelector('#trashUp').style.backgroundColor = this.trashColor;
+                document.querySelector('#trashDown').style.backgroundColor = this.trashColor;
+
+                localStorage.removeItem('typeOfWaste')
+            } else this.navigateTo('/news');
         },
         data() {
             return {
-                trashColor: '#000',
-                wasteName: ''
+                trashColor: '',
+                wasteName: '',
+                binColor: ''
+            }
+        },
+        methods: {
+            navigateTo: function(subpage) {
+                if(this.$route.path != subpage) 
+                    this.$router.push(subpage)
             }
         }
     }
 </script>
 
 <style scoped>
+    @keyframes point {
+        0% {
+            top: 15%;
+            opacity: 1;
+        }
+
+        100% {
+            top: 5%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes binText {
+        0% {
+            transform: rotateZ(5deg)
+        }
+
+        50% {
+            transform: rotateZ(-5deg)
+        }
+
+        100% {
+            transform: rotateZ(5deg)
+        }
+    }
+
+    div.trash i.icon-left-open {
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    font-size: 30px;
+    color: #fff;
+    z-index: 999;
+  }
+
     div.trash {
         width: 100%;
         height: 100vh;
@@ -63,10 +121,31 @@
 
     div.trash h1 {
         position: fixed;
+        top: 5%;
+        opacity: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 26px;
+        animation: point 3s;
+    }
+
+    div.trash h2 {
+        position: fixed;
         bottom: 50%;
         width: 100%;
         text-align: center;
         font-size: 26px;
+    }
+
+    div.trash h3 {
+        position: fixed;
+        bottom: 10%;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 26px;
+        animation: binText 3s infinite;
     }
 
     div.trash div#top {

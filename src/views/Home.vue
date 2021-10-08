@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <TopBar />
+    <TopBar :points="points" :lastPoints="lastPoints" />
     <transition name="fade" mode="out-in">
       <router-view/>
     </transition>
@@ -18,17 +18,34 @@
       NavBar,
       TopBar
     },
+    data() {
+      return {
+        points: "",
+        lastPoints: ""
+      }
+    },
     methods: {
       navigateTo: function(subpage) {
         if(this.$route.path != subpage) 
+        {
+          if(localStorage.getItem('lastPoints') != null)
+            localStorage.removeItem('lastPoints')
+
           this.$router.push(subpage)
+        }
       }
     },
-    mounted: function () {
-      if(localStorage.getItem('login') != null)
+    beforeMount: function () {
+      if(localStorage.getItem('login') != null) 
         this.navigateTo('/news')
       else
         this.navigateTo('/register')
+
+      if(localStorage.getItem('points') != null)
+        this.points = localStorage.getItem('points')
+
+      if(localStorage.getItem('lastPoints') != null)
+        this.lastPoints = localStorage.getItem('lastPoints')
     }
   }
 </script>

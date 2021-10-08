@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     username: function() {
-        return (this.id + 1) + ". " + this.userData.username
+      return (this.id + 1) + ". " + this.userData.name.charAt(0).toUpperCase() + this.userData.name.slice(1)
     }
   },
   mounted: function () {

@@ -7,6 +7,8 @@
 <script>
   import Quagga from 'quagga';
 
+  import { getWasteType } from '@/api.js';
+
   export default {
     name: 'ScannerComp',
     data() {
@@ -18,10 +20,16 @@
       detect: function(result) {
         Quagga.stop()
 
-        localStorage.setItem('BarCode', result.codeResult.code)
-        localStorage.setItem('TypeOfWaste', 'paper')
+        getWasteType(result.codeResult.code)
+        .then((res) => {
+          localStorage.setItem('typeOfWaste', res.data.type)
+          localStorage.setItem('points', localStorage.getItem('points') + 1)
 
-        this.$router.push('/trash')
+          this.$router.push('/trash')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
       }
     },
     mounted: function () {

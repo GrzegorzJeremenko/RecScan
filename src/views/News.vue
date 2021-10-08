@@ -12,6 +12,8 @@
 <script>
   import Article from '@/components/Article.vue'
 
+  import { getNews } from '@/api.js'
+
   export default {
     name: 'News',
     components: {
@@ -19,23 +21,17 @@
     },
     data() {
       return {
-        articles: [
-          {
-            type: 'video',
-            source: 'CwAP97KJTIg',
-            title: 'Recykling odpadów w Polsce',
-            description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
-            date: '08.10.2021'
-          },
-          {
-            type: 'image',
-            source: 'https://lh3.googleusercontent.com/proxy/vFHz4EtEFru3_lwIoQquAL5nfVL3ogxVZnprQqkApiWfRzHwVJLOka5Hs-iQlYT18BlUi3xJiFAqrhXT5KnsEjAYesRcG2zJEvKQvdQEzKdeAfHejCOxEUfbNl6nuWAPz7IYiCGHh9uYZAIDhQ4v_A',
-            title: 'Jak segregować?',
-            description: 'Główna zasada Jednolitego Systemu Segregacji Odpadów (JSSO) jest jedna – należy oddzielać surowce od odpadów, które nie nadają się do powtórnego przetworzenia. Jakie surowce oddzielamy? Są to: metale i tworzywa sztuczne, papier, a także opakowania szklane i odpady biodegradowalne.',
-            date: '07.10.2021'
-          }
-        ]
+        articles: []
       }
+    },
+    mounted: function () {
+      getNews()
+      .then((res) => {
+        this.articles = res.data;
+      })
+      .catch((err) => {
+          console.error(err)
+        })
     }
   }
 </script>

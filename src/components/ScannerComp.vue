@@ -19,17 +19,23 @@
     methods: {
       detect: function(result) {
         Quagga.stop()
+        
+        if (this.scanCode !== result.codeResult.code) {
+          this.scanCode = result.codeResult.code
 
-        getWasteType(result.codeResult.code)
-        .then((res) => {
-          localStorage.setItem('typeOfWaste', res.data.type)
-          localStorage.setItem('points', localStorage.getItem('points') + 1)
+          getWasteType(result.codeResult.code)
+          .then((res) => {
+            localStorage.setItem('typeOfWaste', res.data.type)
+            console.log(localStorage.getItem('points'))
+            localStorage.setItem('points', parseInt(localStorage.getItem('points')) + 1)
+            console.log(localStorage.getItem('points'))
 
-          this.$router.push('/trash')
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+            this.$router.push('/trash')
+          })
+          .catch((err) => {
+            console.error(err)
+          })
+        }
       }
     },
     mounted: function () {

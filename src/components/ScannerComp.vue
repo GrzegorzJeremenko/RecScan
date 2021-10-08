@@ -25,12 +25,15 @@
 
           getWasteType(result.codeResult.code)
           .then((res) => {
-            localStorage.setItem('typeOfWaste', res.data.type)
-            console.log(localStorage.getItem('points'))
-            localStorage.setItem('points', parseInt(localStorage.getItem('points')) + 1)
-            console.log(localStorage.getItem('points'))
+            if (res.status === 404) {
+              localStorage.setItem('lastScanCode', result.codeResult.code)
+              this.$router.push('/additem')
+            } else {
+              localStorage.setItem('typeOfWaste', res.data.type)
+              localStorage.setItem('points', parseInt(localStorage.getItem('points')) + 1)
 
-            this.$router.push('/trash')
+              this.$router.push('/trash')
+            }
           })
           .catch((err) => {
             console.error(err)

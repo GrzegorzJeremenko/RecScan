@@ -31,10 +31,13 @@ function getWasteType(barcode) {
             url: `${ ip }/api/v1/items/${ barcode }`,
             headers: { 
                 Authorization: localStorage.getItem('userId')
-            }
+            },
+            validateStatus: false
         })
         .then((res) => {
             if (res.status === 200) {
+                resolve(res)
+            } else if (res.status === 404) {
                 resolve(res)
             }
 
@@ -101,4 +104,26 @@ function userLogout() {
     })
 }
 
-export { getNews, getWasteType, userRegister, getRanking, userLogout }
+function addItem(name, barcode, type) {
+    return new Promise((resolve, reject) => {
+        axios({
+            method: 'post',
+            url: `${ ip }/api/v1/items/`,
+            data: {
+                name,
+                barcode,
+                type
+            }
+        })
+        .then((res) => {
+            if (res.status === 201) {
+                resolve(res)
+            }
+
+            reject()
+        })
+        .catch((err) => reject(err))
+    })
+}
+
+export { getNews, getWasteType, userRegister, getRanking, userLogout, addItem }

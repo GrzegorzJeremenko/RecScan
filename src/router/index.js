@@ -6,9 +6,9 @@ import Home from '../views/Home.vue'
 import News from '../views/News.vue'
 import Scanner from '../views/Scanner.vue'
 import Award from '../views/Award.vue'
-import Settings from '../views/Settings.vue'
 import Trash from '../views/Trash.vue'
 import Register from '../views/Register.vue'
+import AddItem from '../views/AddItem.vue'
 
 Vue.use(VueRouter)
 
@@ -25,10 +25,6 @@ const routes = [
       {
         path: 'award',
         component: Award,
-      },
-      {
-        path: 'settings',
-        component: Settings,
       }
     ]
   },
@@ -43,6 +39,10 @@ const routes = [
   {
     path: '/register',
     component: Register,
+  },
+  {
+    path: '/additem',
+    component: AddItem
   }
 ]
 

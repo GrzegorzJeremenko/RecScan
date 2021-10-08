@@ -86,7 +86,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
 
     div.trash div#top div#trashUp {

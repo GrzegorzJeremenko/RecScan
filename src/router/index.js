@@ -8,6 +8,7 @@ import Scanner from '../views/Scanner.vue'
 import Award from '../views/Award.vue'
 import Settings from '../views/Settings.vue'
 import Trash from '../views/Trash.vue'
+import Register from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,10 @@ const routes = [
   {
     path: '/trash',
     component: Trash,
+  },
+  {
+    path: '/register',
+    component: Register,
   }
 ]
 

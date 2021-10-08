@@ -15,6 +15,18 @@
     components: {
       NavBar,
       TopBar
+    },
+    methods: {
+      navigateTo: function(subpage) {
+        if(this.$route.path != subpage) 
+          this.$router.push(subpage)
+      }
+    },
+    mounted: function () {
+      if(localStorage.getItem('login') != null)
+        this.navigateTo('/news')
+      else
+        this.navigateTo('/register')
     }
   }
 </script>

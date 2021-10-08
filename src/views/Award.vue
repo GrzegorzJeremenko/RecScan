@@ -36,7 +36,35 @@
           {
             username: 'Jan',
             points: 147
-          }
+          },
+          {
+            username: 'Bartek',
+            points: 137
+          },
+          {
+            username: 'Kacper',
+            points: 121
+          },
+          {
+            username: 'Szymon',
+            points: 111
+          },
+          {
+            username: 'Mateusz',
+            points: 102
+          },
+          {
+            username: 'Martyna',
+            points: 98
+          },
+          {
+            username: 'Daniel',
+            points: 87
+          },
+          {
+            username: 'Patrycja',
+            points: 64
+          },
         ]
       }
     }

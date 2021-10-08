@@ -1,8 +1,6 @@
 const axios = require('axios')
 
-// const ip = "https://recscan-api.herokuapp.com"
-const ip = "http://localhost:3000"
-// const ip = "http://192.168.1.13:3000"
+const ip = "https://recscan-api.herokuapp.com"
 
 function getNews() {
     return new Promise((resolve, reject) => {

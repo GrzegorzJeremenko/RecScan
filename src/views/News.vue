@@ -1,36 +1,63 @@
 <template>
   <div class="news">
     <h1>Aktualności</h1>
+    <Article 
+      v-for="article in articles"
+      :articleData="article"
+      :key="article.date" />
+    <div id="bottom"></div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'News',
-  data() {
-    return {
-      news: [
-        {
-          type: 'video',
-          source: 'https://www.youtube.com/watch?v=CwAP97KJTIg',
-          title: 'Jak segreguje się śmieci',
-          description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
-          date: '25.01.2021'
-        }
-      ]
+  import Article from '@/components/Article.vue'
+
+  export default {
+    name: 'News',
+    components: {
+      Article
+    },
+    data() {
+      return {
+        articles: [
+          {
+            type: 'video',
+            source: 'CwAP97KJTIg',
+            title: 'Dowiedz się jak segregować',
+            description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
+            date: '25.01.2021'
+          },
+          {
+            type: 'image',
+            source: 'https://lh3.googleusercontent.com/proxy/vFHz4EtEFru3_lwIoQquAL5nfVL3ogxVZnprQqkApiWfRzHwVJLOka5Hs-iQlYT18BlUi3xJiFAqrhXT5KnsEjAYesRcG2zJEvKQvdQEzKdeAfHejCOxEUfbNl6nuWAPz7IYiCGHh9uYZAIDhQ4v_A',
+            title: 'Który kosz wybrać?',
+            description: 'Ilość surowców odzyskiwanych z odpadów komunalnych w Polsce stopniowo wzrasta. Coraz więcej z nich zamiast na składowiska trafia do ponownej przeróbki.',
+            date: '22.01.2021'
+          }
+        ]
+      }
     }
   }
-}
 </script>
 
 <style scoped>
+  div.news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   div.news h1 {
-    position: fixed;
-    left: 30px;
-    top: 30px;
-    height: 40px;
-    line-height: 40px;
+    width: 80%;
+    height: 80px;
+    line-height: 100px;
     font-size: 24px;
     color: #444;
+    background-color: #fff;
+  }
+
+  div.news div#bottom {
+    width: 100%;
+    height: 80px;
   }
 </style>

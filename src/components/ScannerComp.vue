@@ -14,6 +14,16 @@
         scanCode: ''
       }
     },
+    methods: {
+      detect: function(result) {
+        Quagga.stop()
+
+        localStorage.setItem('BarCode', result.codeResult.code)
+        localStorage.setItem('TypeOfWaste', 'paper')
+
+        this.$router.push('/trash')
+      }
+    },
     mounted: function () {
       Quagga.init({
         inputStream : {
@@ -33,12 +43,7 @@
         }
       })
 
-      Quagga.onDetected(function(result) {
-        let code = result.codeResult.code
-
-        console.log(result)
-        console.log(code)
-      })
+      Quagga.onDetected(this.detect)
     },
     destroy: function() {
       Quagga.stop()
@@ -47,5 +52,14 @@
 </script>
 
 <style scoped>
-  
+  div.scannerComp {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+  }
+
+  div.scannerComp div#interactive {
+    width: 100%;
+    height: 100%;
+  }
 </style>

@@ -72,7 +72,12 @@
   }
 
   canvas.drawingBuffer {
-      display: none;
+    display: none;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
   }
 
   @font-face {

@@ -2,18 +2,18 @@
   <nav>
     <li>
       <ol
-        v-on:click="$router.push('/news')">
+        v-on:click="navigateTo('/news')">
         <i
           class="icon-home"></i>
       </ol>
       <ol
         class="circle"
-        v-on:click="$router.push('/scanner')">
+        v-on:click="navigateTo('/scanner')">
         <i
           class="icon-qrcode"></i>
       </ol>
       <ol
-        v-on:click="$router.push('/award')">
+        v-on:click="navigateTo('/award')">
         <i
           class="icon-award"></i>
       </ol>
@@ -24,6 +24,12 @@
 <script>
 export default {
   name: 'NavBar',
+  methods: {
+    navigateTo: function(subpage) {
+      if(this.$route.path != subpage) 
+        this.$router.push(subpage)
+    }
+  }
 }
 </script>
 
@@ -36,6 +42,7 @@ export default {
     background-color: #2ecc71;
     z-index: 9999;
     border-radius: 10px 10px 0 0;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
   }
 
   nav li {

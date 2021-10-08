@@ -16,7 +16,7 @@
     </div>
     <div
       id="settings"
-      v-on:click="$router.push('/settings')">
+      v-on:click="navigateTo('/settings')">
       <i
         class="icon-cog"></i>
     </div>
@@ -34,6 +34,12 @@ export default {
   },
   mounted: function () {
     this.$refs.numberOfPoints.play();
+  },
+  methods: {
+    navigateTo: function(subpage) {
+      if(this.$route.path != subpage) 
+        this.$router.push(subpage)
+    }
   }
 }
 </script>

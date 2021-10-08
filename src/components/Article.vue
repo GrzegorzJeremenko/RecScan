@@ -62,7 +62,6 @@ export default {
     article {
         width: 80%;
         background-color: #2ecc71;
-        z-index: 2;
         margin: 0 0 20px 0;
         display: flex;
         flex-direction: column;

@@ -1,15 +1,44 @@
 <template>
   <div class="award">
     <h1>Ranking</h1>
+    <UsersRanking
+      v-for="(user, index) in users"
+      :userData="user"
+      :id="index"
+      :key="index"/>
     <div id="bottom"></div>
   </div>
 </template>
 
 <script>
+  import UsersRanking from '@/components/UsersRanking.vue'
+
   export default {
     name: 'Award',
     components: {
-
+      UsersRanking
+    },
+    data() {
+      return {
+        users: [
+          {
+            username: 'Grzegorz',
+            points: 512
+          },
+          {
+            username: 'Konrad',
+            points: 200
+          },
+          {
+            username: 'Adam',
+            points: 187
+          },
+          {
+            username: 'Jan',
+            points: 147
+          }
+        ]
+      }
     }
   }
 </script>

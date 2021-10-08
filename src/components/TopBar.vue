@@ -12,14 +12,20 @@
           @complete="completed"
           easing="Sine.easeOut"/>
       </h1>
-    </div>
-    <div id="settings">
       <i class="icon-diamond"></i>
+    </div>
+    <div
+      id="settings"
+      v-on:click="logout">
+      <i
+        class="icon-logout"></i>
     </div>
   </section>
 </template>
 
 <script>
+import { userLogout } from '@/api.js';
+
 export default {
   name: 'Points',
   props: ['points', 'lastPoints'],
@@ -30,6 +36,20 @@ export default {
     },
     completed: function() {
       localStorage.setItem('lastPoints', this.points)
+    },
+    logout: function() {
+      userLogout()
+      .then(() => {
+        localStorage.removeItem('login')
+        localStorage.removeItem('userId')
+        localStorage.removeItem('points')
+        localStorage.removeItem('lastPoints')
+
+        this.$router.push('/register')
+      })
+      .catch(err => {
+        console.error(err)
+      })
     }
   }
 }
@@ -48,7 +68,7 @@ export default {
   }
 
   section#topBar div#points {
-    width: calc(100% - 45px);
+    width: calc(100% - 50px);
     height: 100%;
     margin: 0 -10px 0 0;
     border-radius: 10px;
@@ -66,8 +86,12 @@ export default {
     margin: 0 3px 0 0;
   }
 
+  section#topBar div#points i.icon-diamond {
+    color: #fff;
+  }
+
   section#topBar div#settings {
-    width: 55px;
+    width: 60px;
     height: 100%;
     background-color: #27ae60;
     z-index: 999;
@@ -78,9 +102,9 @@ export default {
     align-items: center;
   }
 
-  section#topBar div#settings i.icon-diamond {
+  section#topBar div#settings i.icon-logout {
     color: #fff;
     font-size: 18px;
-    margin: 0 0 0 5px;
+    margin: 0 0 0 8px;
   }
 </style>

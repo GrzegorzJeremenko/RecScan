@@ -18,27 +18,30 @@
     },
     methods: {
       detect: function(result) {
-        Quagga.stop()
+        if (result.codeResult.code.substring(0,2) === 59) {
+          Quagga.stop()
         
-        if (this.scanCode !== result.codeResult.code) {
-          this.scanCode = result.codeResult.code
+          if (this.scanCode !== result.codeResult.code) {
 
-          getWasteType(result.codeResult.code)
-          .then((res) => {
-            if (res.status === 404) {
-              localStorage.setItem('lastScanCode', result.codeResult.code)
-              this.$router.push('/additem')
-            } else {
-              localStorage.setItem('typeOfWaste', res.data.type)
-              localStorage.setItem('points', parseInt(localStorage.getItem('points')) + 1)
+            this.scanCode = result.codeResult.code
 
-              this.$router.push('/trash')
-            }
-          })
-          .catch((err) => {
-            console.error(err)
-          })
-        }
+            getWasteType(result.codeResult.code)
+            .then((res) => {
+              if (res.status === 404) {
+                localStorage.setItem('lastScanCode', result.codeResult.code)
+                this.$router.push('/additem')
+              } else {
+                localStorage.setItem('typeOfWaste', res.data.type)
+                localStorage.setItem('points', parseInt(localStorage.getItem('points')) + 1)
+
+                this.$router.push('/trash')
+              }
+            })
+            .catch((err) => {
+              console.error(err)
+            })
+          }
+        } 
       }
     },
     mounted: function () {

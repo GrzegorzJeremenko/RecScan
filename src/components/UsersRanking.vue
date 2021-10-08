@@ -2,7 +2,7 @@
   <div
     class="userRank"
     :style="{ width: width + '%', backgroundColor: backgroundColor}">
-      <h1>{{ userData.username }}</h1>
+      <h1>{{ username }}</h1>
       <div>
           <h2>
               <number
@@ -29,6 +29,11 @@ export default {
         width: '',
         backgroundColor: ''
       }
+  },
+  computed: {
+    username: function() {
+        return (this.id + 1) + ". " + this.userData.username
+    }
   },
   mounted: function () {
     this.$refs.numberOfPoints.play();
